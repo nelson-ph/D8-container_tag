@@ -1,0 +1,49 @@
+<?php
+/**
+* @file
+* A description of what your module does.
+*/
+
+/**
+ * Implements hook_theme().
+ *
+ * Register a module (or theme's) theme implementations.
+ *
+ */
+function container_tag_theme() {
+  return [
+    'container_tag' => [
+      'render element' => 'element',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for container_tag templates.
+ *
+ * Default template: container-tag.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - element: An associative array containing the properties of the element.
+ *     Properties used: #id, #attributes, #children.
+ */
+function template_preprocess_container_tag(&$variables) {
+  $variables['has_parent'] = FALSE;
+  $element = $variables['element'];
+  $variables['tag'] = !empty($element['#tag']) ? $element['#tag'] : 'div';
+  // Ensure #attributes is set.
+  $element += ['#attributes' => []];
+
+  // Special handling for form elements.
+  if (isset($element['#array_parents'])) {
+    // Assign an html ID.
+    if (!isset($element['#attributes']['id'])) {
+      $element['#attributes']['id'] = $element['#id'];
+    }
+    $variables['has_parent'] = TRUE;
+  }
+
+  $variables['children'] = $element['#children'];
+  $variables['attributes'] = $element['#attributes'];
+}

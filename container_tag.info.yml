@@ -1,0 +1,5 @@
+name: Container tag
+type: module
+description: "Extends core container, so that we can pass the tag that will be used as container."
+core: 8.x
+package: Theme
