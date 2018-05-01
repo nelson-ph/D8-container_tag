@@ -14,7 +14,7 @@ Programmatically:
 
 ```php
 $element=[
-  '#type'=>'container_tag,
+  '#type'=>'container_tag',
   '#tag'=>'strong',
   'container_values'=>[
     'markup'=>[
