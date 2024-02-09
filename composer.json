@@ -4,8 +4,8 @@
     "type": "drupal-module",
     "homepage": "https://github.com/nelson-ph/container_tag",
     "require-dev": {
-        "phpro/grumphp": "^0.14.0",
-        "jakub-onderka/php-parallel-lint": "^1.0"
+        "phpro/grumphp": "*",
+        "php-parallel-lint/php-parallel-lint": "*"
     },
     "license": "MIT",
     "authors": [
